@@ -1,0 +1,29 @@
+<div class="gameScreen" [ngStyle]="{'visibility': isGameVisible}"><br>
+    <tetris-core id="tetCore" #game (lineCleared)="onLineCleared()" (lineCleared)="addPoints()"></tetris-core>
+    <p>Player: {{name}}
+        <br>
+        E-mail: {{email}}
+        <br>
+        Points: {{points}}
+        <br>
+        Game status: {{status}}
+    </p>
+    <div class="tetrisButtons">
+        <button class="tetrisButton" (click)="game.actionStart()" (click)="startGame()">Start</button>
+        <button class="tetrisButton" (click)="game.actionStop()" (click)="pauseGame()">Stop</button>
+        <button class="tetrisButton" (click)="game.actionReset()" (click)="resetGame()">Reset</button>
+        <br>
+        <br>
+        <br>
+        <button class="tetrisButton" (click)="game.actionLeft()">Left</button>
+        <button class="tetrisButton" (click)="game.actionRotate()">Rotate</button>
+        <button class="tetrisButton" (click)="game.actionRight()">Right</button>
+        <br>
+        <button class="tetrisButton" (click)="game.actionDown()">Down</button>
+
+        <br>
+        <br>
+        <br>
+        <button class="tetrisButton" (click)="exitGame()" (click)="playerExit.emit(isWelcomeVisible)">Exit game</button>
+    </div>
+</div>

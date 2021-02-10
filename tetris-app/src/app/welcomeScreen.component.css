@@ -1,0 +1,25 @@
+.welcomeScreen{
+    position: fixed;
+    top:50%;
+    left:50%;
+    height: 700px; 
+    width: 600px;
+    border: solid;
+    border-width: 5px;
+    margin-top: -400px;
+    margin-left: -300px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.welcomeMenu{
+    position: relative;
+    top: 100px;
+}
+
+#startButton{
+    border-radius: 200px;
+    width: 100px;
+    height: 100px;
+    font-size: 20px;
+}
