@@ -12,19 +12,33 @@
     font-size: 20px;
 }
 .tetrisButton{
-    border-radius: 200px;
+    border-radius: 170px;
     width: 70px;
     height: 70px;
     font-size: 17px;
 
 }
 
+#logButton{
+    position: relative;
+    top: -10px;
+    height: 40px;
+    width: 150px;
+    font-size: 20px;
+}
+
 .tetrisButtons{
     position: relative;
-    top: 100px;
+    top: 20px;
 }
 #tetCore{
     position: relative;
     left: 20px;
     top: 20px;
+}
+#logBackButton{
+    position: absolute;
+    z-index: 400;
+    height: 40px;
+    width: 150px;
 }

@@ -1,0 +1,8 @@
+<div class="logScreen" [ngStyle]="{'visibility': isLogVisible}">
+    <button id="filterButton" (click)=filter()>Filter</button>
+    <tr class="entries" *ngFor="let entry of gameplayHistory ">
+        <td>{{entry | sortPipe: condition}}</td>
+    </tr>
+
+
+</div>

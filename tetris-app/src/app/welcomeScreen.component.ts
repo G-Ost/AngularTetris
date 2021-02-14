@@ -1,4 +1,4 @@
-import { Component, Output, EventEmitter, Input, OnChanges, ChangeDetectionStrategy } from '@angular/core';
+import { Component, Output, EventEmitter, Input, OnChanges } from '@angular/core';
 
 @Component({
     selector: 'welcomeScreen',
@@ -34,29 +34,33 @@ export class WelcomeScreenComponent implements OnChanges {
             alert("No spaces in e-mail, please!")
             return;
         }
+        else if (email.indexOf("@") === -1 || email.indexOf("@") === 0 || email.indexOf("@") === email.length - 1 ||
+            email.indexOf(".") === -1 || email.indexOf(".") === 0 || email.indexOf(".") === email.length - 1) {
+            alert("Wrong e-mail format!")
+            return
+        }
         else {
             this.email = email;
         }
         this.isWelcomeVisible = "hidden";
         this.isGameVisible = "visible";
+        console.log("xdd")
 
     }
     @Output() passPlayerData = new EventEmitter();
-    counter: Number;
-    counter2: Number;
-    visibility2: string;
-    public setVisibility(visibility, counter) {
-        this.isWelcomeVisible = visibility;
-        this.counter = counter;
-        this.name = "";
-        this.email = "";
-    }
-
-    @Input() public set isWelcomeVisible2(data) {
-        this.visibility2 = data.split(',')[0]
-        this.counter2 = data.split(',')[1]
+    @Input() stateNumber: number;
+    public checkVisibility(state: number) {
+        if (state % 2 === 1) {
+            this.isWelcomeVisible = "hidden"
+        }
+        else {
+            this.isWelcomeVisible = "visible";
+            this.name = "";
+            this.email = "";
+            this.isGameVisible = "hidden";
+        }
     }
     ngOnChanges() {
-        this.setVisibility(this.visibility2, this.counter2);
+        this.checkVisibility(this.stateNumber);
     }
 }

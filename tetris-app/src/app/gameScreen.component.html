@@ -7,7 +7,11 @@
         Points: {{points}}
         <br>
         Game status: {{status}}
+        <br>
+        time: {{timePassed}}
     </p>
+    <br>
+    <button id="logButton" (click)="showLog()">Gameplay Log</button>
     <div class="tetrisButtons">
         <button class="tetrisButton" (click)="game.actionStart()" (click)="startGame()">Start</button>
         <button class="tetrisButton" (click)="game.actionStop()" (click)="pauseGame()">Stop</button>
@@ -24,7 +28,13 @@
         <br>
         <br>
         <br>
-        <button class="tetrisButton" (click)="exitGame()" (click)="playerExit.emit([isWelcomeVisible, counter])">Exit
+        <button class="tetrisButton" (click)="exitGame()" (click)="playerExit.emit(stateNumber)">Exit
             game</button>
     </div>
+
+    <logScreen logEntry="{{logEntry}}" logVisibility="{{logVisibility}}">
+
+    </logScreen>
+
+    <button id="logBackButton" [ngStyle]="{'visibility': logVisibility}" (click)="hideLog()">Go back</button>
 </div>
