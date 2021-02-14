@@ -1,5 +1,4 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { timeStamp } from 'console';
 
 @Component({
     selector: 'gameScreen',
@@ -22,7 +21,8 @@ export class GameScreenComponent {
     public startGame() { this.status = "active" };
     public pauseGame() { this.status = "paused" };
     public resetGame() { this.status = "not started" };
-    public exitGame() { this.isGameVisible = "hidden", this.isWelcomeVisible = "visible" }
+    public counter: number = 0;
+    public exitGame() { this.isGameVisible = "hidden", this.isWelcomeVisible = "visible", this.counter++ }
 
     @Output() playerExit = new EventEmitter();
 }

@@ -24,6 +24,7 @@
         <br>
         <br>
         <br>
-        <button class="tetrisButton" (click)="exitGame()" (click)="playerExit.emit(isWelcomeVisible)">Exit game</button>
+        <button class="tetrisButton" (click)="exitGame()" (click)="playerExit.emit([isWelcomeVisible, counter])">Exit
+            game</button>
     </div>
 </div>

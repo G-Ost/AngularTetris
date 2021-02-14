@@ -39,15 +39,24 @@ export class WelcomeScreenComponent implements OnChanges {
         }
         this.isWelcomeVisible = "hidden";
         this.isGameVisible = "visible";
+
     }
     @Output() passPlayerData = new EventEmitter();
-
-    @Input() welcomeVisibility: string;
-
-    private setVisibility(visibility) {
+    counter: Number;
+    counter2: Number;
+    visibility2: string;
+    public setVisibility(visibility, counter) {
         this.isWelcomeVisible = visibility;
+        this.counter = counter;
+        this.name = "";
+        this.email = "";
+    }
+
+    @Input() public set isWelcomeVisible2(data) {
+        this.visibility2 = data.split(',')[0]
+        this.counter2 = data.split(',')[1]
     }
     ngOnChanges() {
-        this.setVisibility(this.welcomeVisibility)
+        this.setVisibility(this.visibility2, this.counter2);
     }
 }

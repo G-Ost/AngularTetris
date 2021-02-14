@@ -8,12 +8,13 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'tetris-app';
   playerInfo = ["placeholder", "placeholder", "hidden"];
-  welcomeVisibility = "visible";
+  // welcomeVisibility = "visible";
 
   getPlayerInfo(playerInfo: Array<string>) {
     this.playerInfo = playerInfo;
   }
-  getExit(visibilityInfo) {
-    this.welcomeVisibility = visibilityInfo;
+  public isWelcomeVisible: Object;
+  getExit(isWelcomeVisible: Object) {
+    this.isWelcomeVisible = isWelcomeVisible;
   }
 }
