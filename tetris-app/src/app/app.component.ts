@@ -7,7 +7,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'tetris-app';
-  playerInfo = ["placeholder", "placeholder", "visible"];
+  playerInfo = ["placeholder", "placeholder", "hidden"];
 
   getPlayerInfo(playerInfo: Array<string>) {
     this.playerInfo = playerInfo;

@@ -10,7 +10,7 @@ export class GameScreenComponent {
     public email: string;
     public isGameVisible: string;
     public isWelcomeVisible: string = "visible";
-    public logVisibility = "visible";
+    public logVisibility = "hidden";
     @Input() public set playerData(data) {
         this.name = data.split(',')[0]
         this.email = data.split(',')[1]
@@ -41,17 +41,25 @@ export class GameScreenComponent {
     public orderNumber: number = 0;
     public logEntry: string;
     public lastAction: string = "";
+
+    public dateWithZero(date: string) {
+        if (date.charAt(1) === "")
+            return "0" + date;
+        else
+            return date
+
+    };
     public addToHistory(action: string) {
         if (action !== this.lastAction) {
             this.orderNumber++;
             let currentDate = new Date();
-            this.logEntry = this.orderNumber.toString() + ". "
+            this.logEntry =
                 + currentDate.getFullYear().toString() + "-"
-                + (currentDate.getMonth() + 1).toString() + "-"
-                + currentDate.getDate().toString() + " "
-                + currentDate.getHours().toString() + ":"
-                + currentDate.getMinutes().toString() + ":"
-                + currentDate.getSeconds().toString() + " - "
+                + this.dateWithZero((currentDate.getMonth() + 1).toString()) + "-"
+                + this.dateWithZero(currentDate.getDate().toString()) + " "
+                + this.dateWithZero(currentDate.getHours().toString()) + ":"
+                + this.dateWithZero(currentDate.getMinutes().toString()) + ":"
+                + this.dateWithZero(currentDate.getSeconds().toString()) + " - "
                 + action;
             this.lastAction = action;
         }
@@ -61,8 +69,8 @@ export class GameScreenComponent {
 
     public addPoints() { this.points = this.points + 100, this.addToHistory("Line cleared") };
     public startGame() { this.status = "active", this.addToHistory("Game started"), this.startTimer() };
-    public pauseGame() { this.status = "paused", this.addToHistory("Game Paused"), this.pauseTimer() };
-    public resetGame() { this.resetTimer(), this.addToHistory("Game Reset") };
+    public pauseGame() { this.status = "paused", this.addToHistory("Game paused"), this.pauseTimer() };
+    public resetGame() { this.resetTimer(), this.addToHistory("Game reset") };
     public stateNumber: number = 2;
 
     public showLog() {

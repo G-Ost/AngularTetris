@@ -1,5 +1,15 @@
 <div class="logScreen" [ngStyle]="{'visibility': isLogVisible}">
-    <button id="filterButton" (click)=filter()>Filter</button>
+    <div class="custom-select">
+        <label id="containerLabel" for="condition">Sort by:</label> <br><br>
+        <select id="optionContainer" [(ngModel)]="condition" name="condition">
+            <option value="">All</option>
+            <option value="start">Game start</option>
+            <option value="pause">Game pause</option>
+            <option value="reset">Game reset</option>
+            <option value="cleared">Line cleared</option>
+        </select>
+    </div>
+    <br><br>
     <tr class="entries" *ngFor="let entry of gameplayHistory ">
         <td>{{entry | sortPipe: condition}}</td>
     </tr>

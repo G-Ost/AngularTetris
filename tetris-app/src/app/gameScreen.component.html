@@ -1,6 +1,6 @@
 <div class="gameScreen" [ngStyle]="{'visibility': isGameVisible}"><br>
     <tetris-core id="tetCore" #game (lineCleared)="onLineCleared()" (lineCleared)="addPoints()"></tetris-core>
-    <p>Player: {{name}}
+    <p id="playerInfo">Player: {{name}}
         <br>
         E-mail: {{email}}
         <br>
@@ -10,7 +10,6 @@
         <br>
         time: {{timePassed}}
     </p>
-    <br>
     <button id="logButton" (click)="showLog()">Gameplay Log</button>
     <div class="tetrisButtons">
         <button class="tetrisButton" (click)="game.actionStart()" (click)="startGame()">Start</button>

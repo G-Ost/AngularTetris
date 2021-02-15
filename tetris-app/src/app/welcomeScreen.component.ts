@@ -24,6 +24,9 @@ export class WelcomeScreenComponent implements OnChanges {
             alert("Only letters allowed for name!")
             return;
         }
+        else if (name.length > 15) {
+            alert("Name too long! Please choose shorter one.")
+        }
         else { this.name = name; }
 
         if (email.length === 0) {
@@ -39,6 +42,9 @@ export class WelcomeScreenComponent implements OnChanges {
             alert("Wrong e-mail format!")
             return
         }
+        else if (email.length > 25) {
+            alert("Wrong email");
+        }
         else {
             this.email = email;
         }
@@ -51,7 +57,7 @@ export class WelcomeScreenComponent implements OnChanges {
     @Input() stateNumber: number;
     public checkVisibility(state: number) {
         if (state % 2 === 1) {
-            this.isWelcomeVisible = "hidden"
+            this.isWelcomeVisible = "visible"
         }
         else {
             this.isWelcomeVisible = "visible";

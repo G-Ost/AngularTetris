@@ -26,9 +26,14 @@ export class LogScreenComponent implements OnChanges {
         this.isLogVisible = visibility;
     }
 
-    public filter(givenCondition) {
-        this.condition = givenCondition;
-    }
+    // public filter(givenCondition) {
+    //     if (givenCondition === null) {
+    //         this.condition = "";
+    //     }
+    //     else
+    //         this.condition = givenCondition;
+    //     console.log(this.condition)
+    // }
 
     ngOnChanges(changes) {
         if (changes.logEntry)
