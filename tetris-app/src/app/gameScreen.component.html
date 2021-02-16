@@ -1,5 +1,5 @@
 <div class="gameScreen" [ngStyle]="{'visibility': isGameVisible}"><br>
-    <tetris-core id="tetCore" #game (lineCleared)="onLineCleared()" (lineCleared)="addPoints()"></tetris-core>
+    <tetris-core #game (lineCleared)="addPoints()" id="tetCore"></tetris-core>
     <p id="playerInfo">Player: {{name}}
         <br>
         E-mail: {{email}}
