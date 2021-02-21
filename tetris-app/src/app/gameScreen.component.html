@@ -1,8 +1,8 @@
-<div class="gameScreen" [ngStyle]="{'visibility': isGameVisible}"><br>
+<div class="gameScreen"><br>
     <tetris-core #game (lineCleared)="addPoints()" id="tetCore"></tetris-core>
-    <p id="playerInfo">Player: {{name}}
+    <p id="playerInfo">Player: {{playerInfo.name}}
         <br>
-        E-mail: {{email}}
+        E-mail: {{playerInfo.email}}
         <br>
         Points: {{points}}
         <br>
@@ -27,13 +27,12 @@
         <br>
         <br>
         <br>
-        <button class="tetrisButton" (click)="exitGame()" (click)="playerExit.emit(stateNumber)">Exit
-            game</button>
+        <button class="tetrisButton" (click)="game.actionStop()" (click)="playerExit.emit()">Exit game</button>
     </div>
 
-    <logScreen logEntry="{{logEntry}}" logVisibility="{{logVisibility}}">
+    <logScreen [logHistory]="logHistory" *ngIf="logScreenVisibility" (hideLog)="hideLog($event)">
 
     </logScreen>
 
-    <button id="logBackButton" [ngStyle]="{'visibility': logVisibility}" (click)="hideLog()">Go back</button>
+
 </div>

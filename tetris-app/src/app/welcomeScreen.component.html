@@ -1,14 +1,21 @@
-<div class="welcomeScreen" [ngStyle]="{'visibility':isWelcomeVisible}">
+<div class="welcomeScreen">
     <div class="welcomeMenu">
-        <h1>Welcome to Tetris-App!</h1>
-        <h2>Enter your name (one word, letters only):</h2>
-        <input [(ngModel)]="name" />
-        <h2>Enter your e-mail address:</h2>
-        <input [(ngModel)]="email" />
-        <br />
-        <br />
-        <br>
-        <button id="startButton" (click)="setPlayer(name, email)"
-            (click)="passPlayerData.emit([name, email, isGameVisible])">Start</button>
+        <form #playerInfo="ngForm" (ngSubmit)="startGame.emit()">
+            <h1>Welcome to Tetris-App!</h1>
+            <h2>Enter your name (one word, letters only):</h2>
+            <input [(ngModel)]="playerInfo.name" name='name' #name="ngModel" required minlength="3" maxlength="20"
+                pattern="^[a-zA-Z]*$" autocomplete="off">
+            <div [hidden]="name.valid || name.pristine">Wrong format</div>
+            <h2>Enter your e-mail address:</h2>
+            <input [(ngModel)]="playerInfo.email" name='email' #email="ngModel" required email autocomplete="off"
+                maxlength="27">
+            <div [hidden]="email.valid || email.pristine">Wrong format</div>
+            <br />
+            <br />
+            <br>
+            <button type="submit" id="startButton" (click)="passPlayerData.emit(playerInfo)"
+                [disabled]='!playerInfo.valid'>Start</button>
+        </form>
     </div>
+
 </div>

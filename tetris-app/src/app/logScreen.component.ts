@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'logScreen',
@@ -6,31 +6,13 @@ import { Component, Input, OnChanges } from '@angular/core';
     styleUrls: ['./logScreen.component.css']
 })
 
-export class LogScreenComponent implements OnChanges {
+export class LogScreenComponent {
     public lastEntry: string;
     public gameplayHistory: Array<string> = [];
     public historyHolder: Array<string> = [];
-    public isLogVisible: string = "hidden";
-    public condition: string = "";
-    @Input() logEntry: string;
-    @Input() logVisibility: string;
+    public sortCondition: string = "toOldest";
+    public filterCondition: string = "";
 
-
-
-    public updateLog(newEntry: string) {
-        this.lastEntry = newEntry;
-        this.gameplayHistory.push(this.lastEntry);
-    }
-
-    public setVisibility(visibility) {
-        this.isLogVisible = visibility;
-    }
-
-    ngOnChanges(changes) {
-        if (changes.logEntry)
-            this.updateLog(this.logEntry);
-        if (changes.logVisibility) {
-            this.setVisibility(this.logVisibility)
-        }
-    };
+    @Input() logHistory: Array<string>;
+    @Output() hideLog = new EventEmitter();
 }

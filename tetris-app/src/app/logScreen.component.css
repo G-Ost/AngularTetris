@@ -3,7 +3,7 @@
     top:50%;
     left:50%;
     height: 700px; 
-    width: 600px;
+    width: 650px;
     border: solid;
     border-width: 5px;
     margin-top: -400px;
@@ -33,16 +33,50 @@
     font-size: 20px;
 }
 
-#optionContainer{
+#filterContainer{
     height: 30px;
     width: 140px;
     font-size: 20px;  
     text-align: center;
     cursor: pointer;
     font-family:   'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
-    border: none;
+}
+
+#sortContainer{
+    height: 30px;
+    width: 230px;
+    font-size: 20px;  
+    text-align: center;
+    cursor: pointer;
+    font-family:   'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 #containerLabel{
+    position: relative;
     font-size: 30px;
+    top: 20px;
+}
+#logBackButton{
+    position: fixed;
+    z-index: 400;
+    height: 40px;
+    width: 150px;
+    left: 1110px;
+    top: 670px;
+    font-size: 25px;
+    background-color: rgba(255, 255, 0, 0.486);
+    font-family:   'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-color: greenyellow;
+    outline: none;
+}
+
+#filterLabel{
+    position: relative;
+    left: -80px;
+    font-size: 22px;
+}
+#sortLabel{
+    position: relative;
+    left: 30px;
+    font-size: 22px;
 }

@@ -1,72 +1,13 @@
-import { Component, Output, EventEmitter, Input, OnChanges } from '@angular/core';
-
+import { Component, Output, EventEmitter, Input } from '@angular/core';
 @Component({
     selector: 'welcomeScreen',
     templateUrl: './welcomeScreen.component.html',
     styleUrls: ['./welcomeScreen.component.css']
 })
-export class WelcomeScreenComponent implements OnChanges {
-    public name: string = "";
-    public email: string;
-    public isWelcomeVisible: string = "visible";
-    public isGameVisible: string = "hidden";
-    public setPlayer(name: string = "", email: string = "") {
-        let letters = /^[A-Za-z]+$/;
-        if (name.length === 0) {
-            alert("Please fill name section!")
-            return;
-        }
-        else if (name.indexOf(" ") !== -1) {
-            alert("No spaces in name, please!")
-            return;
-        }
-        else if (!name.match(letters)) {
-            alert("Only letters allowed for name!")
-            return;
-        }
-        else if (name.length > 15) {
-            alert("Name too long! Please choose shorter one.")
-        }
-        else { this.name = name; }
+export class WelcomeScreenComponent {
 
-        if (email.length === 0) {
-            alert("Please fill e-mail section!")
-            return;
-        }
-        else if (email.indexOf(" ") !== -1) {
-            alert("No spaces in e-mail, please!")
-            return;
-        }
-        else if (email.indexOf("@") === -1 || email.indexOf("@") === 0 || email.indexOf("@") === email.length - 1 ||
-            email.indexOf(".") === -1 || email.indexOf(".") === 0 || email.indexOf(".") === email.length - 1) {
-            alert("Wrong e-mail format!")
-            return
-        }
-        else if (email.length > 25) {
-            alert("Wrong email");
-        }
-        else {
-            this.email = email;
-        }
-        this.isWelcomeVisible = "hidden";
-        this.isGameVisible = "visible";
-        console.log("xdd")
+    public playerInfo = { name: "", email: "" }
 
-    }
+    @Output() startGame = new EventEmitter();
     @Output() passPlayerData = new EventEmitter();
-    @Input() stateNumber: number;
-    public checkVisibility(state: number) {
-        if (state % 2 === 1) {
-            this.isWelcomeVisible = "visible"
-        }
-        else {
-            this.isWelcomeVisible = "visible";
-            this.name = "";
-            this.email = "";
-            this.isGameVisible = "hidden";
-        }
-    }
-    ngOnChanges() {
-        this.checkVisibility(this.stateNumber);
-    }
 }

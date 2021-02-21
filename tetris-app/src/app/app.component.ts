@@ -6,14 +6,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'tetris-app';
-  playerInfo = ["placeholder", "placeholder", "hidden"];
+  title: string = 'tetris-app';
+  playerInfo: { name: string, email: string };
 
-  getPlayerInfo(playerInfo: Array<string>) {
+  welcomeScreenVisibility: boolean = true;
+  gameScreenVisibility: boolean = false;
+
+  getPlayerInfo(playerInfo: { name: string, email: string }) {
     this.playerInfo = playerInfo;
   }
-  public stateNumber: number = 1;
-  getExit(stateNumber: number) {
-    this.stateNumber = stateNumber;
+
+  startGame() {
+    this.welcomeScreenVisibility = false;
+    this.gameScreenVisibility = true;
+
+  }
+
+  playerExit() {
+    this.welcomeScreenVisibility = true;
+    this.gameScreenVisibility = false;
   }
 }

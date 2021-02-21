@@ -7,6 +7,7 @@ import { WelcomeScreenComponent } from './welcomeScreen.component';
 import { GameScreenComponent } from './gameScreen.component';
 import { TetrisCoreModule } from 'ngx-tetris';
 import { LogScreenComponent } from './logScreen.component';
+import { filterPipe } from './filter.pipe';
 import { sortPipe } from './sort.pipe';
 
 
@@ -16,14 +17,17 @@ import { sortPipe } from './sort.pipe';
     WelcomeScreenComponent,
     GameScreenComponent,
     LogScreenComponent,
+    filterPipe,
     sortPipe
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    TetrisCoreModule
+    TetrisCoreModule,
+    FormsModule
   ],
   providers: [
+    filterPipe,
     sortPipe
   ],
   bootstrap: [AppComponent]
