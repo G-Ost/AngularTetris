@@ -1,4 +1,0 @@
-<welcomeScreen *ngIf="welcomeScreenVisibility" stateNumber="{{stateNumber}}" (passPlayerData)="getPlayerInfo($event)"
-    (startGame)="startGame($event)">
-</welcomeScreen>
-<gameScreen [playerInfo]="playerInfo" *ngIf="gameScreenVisibility" (playerExit)="playerExit($event)"></gameScreen>

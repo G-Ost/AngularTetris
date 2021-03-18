@@ -1,5 +1,6 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+import { StorageService } from '../storage.service';
 @Component({
     selector: 'gameScreen',
     templateUrl: './gameScreen.component.html',
@@ -7,22 +8,22 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 })
 export class GameScreenComponent {
 
-    public logScreenVisibility: boolean = false;
+    public playerInfo: { name: string, email: string };
 
-
-    @Input() playerInfo: { name: string, email: string } = {
-        name: "",
-        email: ""
+    constructor(
+        private _router: Router,
+        private _storage: StorageService) {
+        this.playerInfo = this._storage.passPlayerInfo();
     }
+
+    public logScreenVisibility: boolean = false;
 
     public points: number = 0;
     public status: string = "not started";
 
-
-
-
     public timePassed: number = 0;
     public interval: any;
+
 
     startTimer() {
         this.pauseTimer();
@@ -69,7 +70,14 @@ export class GameScreenComponent {
     }
 
     public showLog() {
-        this.logScreenVisibility = true;
+
+        this._router.navigate(["/log"])
+        this._storage.takeLog(this.logHistory);
+    };
+
+    public playerExit() {
+        this._router.navigate(["/welcome"])
+
     };
 
     public addPoints() { this.points = this.points + 100, this.addToHistory("Line cleared") };
@@ -81,9 +89,5 @@ export class GameScreenComponent {
     public hideLog(logVisibility: boolean) {
         this.logScreenVisibility = logVisibility;
     }
-
-
-
-    @Output() playerExit = new EventEmitter();
 
 }

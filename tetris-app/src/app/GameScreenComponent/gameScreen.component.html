@@ -1,15 +1,8 @@
 <div class="gameScreen"><br>
     <tetris-core #game (lineCleared)="addPoints()" id="tetCore"></tetris-core>
-    <p id="playerInfo">Player: {{playerInfo.name}}
-        <br>
-        E-mail: {{playerInfo.email}}
-        <br>
-        Points: {{points}}
-        <br>
-        Game status: {{status}}
-        <br>
-        time: {{timePassed}}
-    </p>
+    <gameInfo
+        [playerInfo]="{name:playerInfo.name, email: playerInfo.email, points:points, status:status, timePassed: timePassed}">
+    </gameInfo>
     <button id="logButton" (click)="showLog()">Gameplay Log</button>
     <div class="tetrisButtons">
         <button class="tetrisButton" (click)="game.actionStart()" (click)="startGame()">Start</button>
@@ -27,12 +20,9 @@
         <br>
         <br>
         <br>
-        <button class="tetrisButton" (click)="game.actionStop()" (click)="playerExit.emit()">Exit game</button>
+        <button class="tetrisButton" (click)="game.actionStop()" (click)="playerExit()">Exit game</button>
     </div>
 
-    <logScreen [logHistory]="logHistory" *ngIf="logScreenVisibility" (hideLog)="hideLog($event)">
-
-    </logScreen>
 
 
 </div>
