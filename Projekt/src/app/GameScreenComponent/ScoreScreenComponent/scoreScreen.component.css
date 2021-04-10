@@ -1,0 +1,71 @@
+.scoreScreen{
+    position: fixed;
+    top:50%;
+    left:50%;
+    height: 700px; 
+    width: 650px;
+    border: solid;
+    border-width: 5px;
+    margin-top: -400px;
+    margin-left: -300px;
+    text-align: center;
+    font-size: 20px;
+    z-index: 100;
+    background-color: rgb(152,251,152)  ;
+    overflow-y: scroll;
+}
+
+#sortLabel{
+    position: relative;
+    left: 30px;
+    font-size: 22px;
+}
+
+#sortContainer{
+    height: 30px;
+    width: 230px;
+    font-size: 20px;  
+    text-align: center;
+    cursor: pointer;
+    font-family:   'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+#scoreBackButton{
+    position: fixed;
+    z-index: 400;
+    height: 40px;
+    width: 150px;
+    left: 1110px;
+    top: 670px;
+    font-size: 25px;
+    background-color: rgba(255, 255, 0, 0.486);
+    font-family:   'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    border-color: greenyellow;
+    outline: none;
+}
+
+.scores{
+    text-align: left;
+    overflow: scroll;
+
+}
+
+.custom-select{
+    position: relative;
+    font-family:   'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.scoreTable{
+    width: 90%;
+    margin-left: 10%;
+}
+.selectorsTable{
+    margin-top:5%;
+    width: 90%;
+    position: relative;
+    flex-wrap: wrap;
+    table-layout: fixed;
+}
+#scoreSelectors{
+    position: absolute;
+    left: 15%;
+}

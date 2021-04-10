@@ -1,0 +1,30 @@
+<div class="gameScreen"><br>
+    <tetris-core #game (lineCleared)="addPoints()" id="tetCore"></tetris-core>
+    <gameInfo
+        [playerInfo]="{name:playerInfo.name, id: playerInfo.id, points:points, status:status, timePassed: timePassed}">
+    </gameInfo>
+    <button class="linkButtons" (click)="showLog()">Gameplay Log</button>
+    <br>
+    <button class="linkButtons" (click)="showScores()">Highscores</button>
+    <div class="tetrisButtons">
+        <button class="tetrisButton" (click)="game.actionStart()" (click)="startGame()">Start</button>
+        <button class="tetrisButton" (click)="game.actionStop()" (click)="pauseGame()">Stop</button>
+        <button class="tetrisButton" (click)="game.actionReset()" (click)="resetGame()">Reset</button>
+        <br>
+        <br>
+        <br>
+        <button class="tetrisButton" (click)="game.actionLeft()">Left</button>
+        <button class="tetrisButton" (click)="game.actionRotate()">Rotate</button>
+        <button class="tetrisButton" (click)="game.actionRight()">Right</button>
+        <br>
+        <button class="tetrisButton" (click)="game.actionDown()">Down</button>
+
+        <br>
+        <br>
+        <br>
+        <button class="tetrisButton" (click)="game.actionStop()" (click)="playerExit()">Exit game</button>
+    </div>
+
+
+
+</div>

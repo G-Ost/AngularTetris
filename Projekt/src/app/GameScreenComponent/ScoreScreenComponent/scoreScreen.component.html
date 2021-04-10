@@ -1,0 +1,43 @@
+<div class="scoreScreen">
+
+    <div class="custom-select">
+        <table class="selectorsTable">
+            <tr>
+                <th> <label id="sortLabel" for="scoreSortCondition">Showing order:</label><br></th>
+                <th> <label id="sortLabel" for="scoreFilterCondition">Filtering condition:</label><br></th>
+            </tr>
+            <tr id="scoreSelectors">
+                <th>
+                    <select id="sortContainer" [(ngModel)]="scoreSortCondition" name="scoreSortCondition">
+                        <option value="descending">Descending order</option>
+                        <option value="ascending">Ascending order</option>
+
+                    </select>
+                </th>
+                <th>
+                    <select id="sortContainer" [(ngModel)]="scoreFilterCondition" name="scoreFilterCondition">
+                        <option value="mine">My scores</option>
+                        <option value="all">All scores</option>
+
+                    </select>
+                </th>
+            </tr>
+        </table>
+    </div>
+    <br><br>
+    <table class="scoreTable">
+        <tr>
+            <th>Name</th>
+            <th>Score</th>
+        </tr>
+        <tr class="scores"
+            *ngFor="let score of displayedScores | scoreSortPipe: scoreSortCondition | scoreFilterPipe: scoreFilterCondition; let i = index ">
+            <td>{{(i+1).toString() + ". " + score.name }}</td>
+            <td>{{ score.score}}</td>
+        </tr>
+        <!-- <tr class="scores" *ngFor="let score of displayedScores | scoreSortPipe: scoreSortCondition; let i = index ">
+        <td>{{(i+1).toString() + ". " + score.name + " " + score.score}}</td>
+    </tr> -->
+    </table>
+    <button id="scoreBackButton" (click)="hideScores()">Go back</button>
+</div>
