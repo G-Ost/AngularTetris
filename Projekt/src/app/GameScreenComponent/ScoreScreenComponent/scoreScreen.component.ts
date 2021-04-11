@@ -7,6 +7,7 @@ import { concatMap } from 'rxjs/operators';
 import { filter } from 'rxjs/operators';
 import { interval } from 'rxjs';
 import { Subscription } from 'rxjs';
+import { timer } from 'rxjs';
 
 export interface DisplayedScores {
     source?: string,
@@ -28,11 +29,11 @@ export class ScoreScreenComponent implements OnDestroy {
 
         this.externalScores = this._storage.passExternalScores();
         this.assignPlayerInfoToMyScores(this._storage.passScores());
-        this._sub$ = interval(5000).pipe(
+        this._sub$ = timer(0, 30000).pipe(
             concatMap(() => { return this._scores.load() }),
             filter(val => this.doUpdateScores)
         ).subscribe(
-            (result) => { this.externalScores = result, this.loadHighScores() }
+            (result) => { console.log("ok"), this.externalScores = result, this.loadHighScores() }
         )
     }
 
@@ -76,7 +77,7 @@ export class ScoreScreenComponent implements OnDestroy {
     public displayedScores: Array<DisplayedScores> = [];
     public scoreSortCondition: string = "descending";
     public scoreFilterCondition: string = "all";
-    public doUpdateScores: boolean = false;
+    public doUpdateScores: boolean = true;
     public hideScores() {
         this._router.navigate(["/game"]);
 
