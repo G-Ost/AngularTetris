@@ -2,7 +2,7 @@
     <input [(ngModel)]="playerInfo.name" name='name' #name="ngModel" required minlength="3" maxlength="20"
         pattern="^[a-zA-Z]*$" autocomplete="off">
     <div [hidden]="name.valid || name.pristine">Wrong format</div>
-    <h2>Enter your e-mail address:</h2>
+    <h2>Enter student id:</h2>
     <input [(ngModel)]="playerInfo.id" name='id' #id="ngModel" autocomplete="off" maxlength="4">
     <br />
     <br />

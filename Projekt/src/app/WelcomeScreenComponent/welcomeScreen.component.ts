@@ -15,8 +15,8 @@ export class WelcomeScreenComponent {
         private _storage: StorageService,
         private _scores: ScoresService
     ) {
-        this.loadScores();
-        setInterval(() => { this.loadScores() }, 5000)
+        // this.loadScores();
+        // setInterval(() => { this.loadScores() }, 5000)
     }
 
 
@@ -32,10 +32,9 @@ export class WelcomeScreenComponent {
         this.postToken();
     }
 
-    loadScores() {
-        this._scores.load().subscribe(result => {
-            this._storage.takeExternalScores(result);
-        })
-    }
-    ////////////// popprawić
+    // loadScores() {
+    //     this._scores.load().subscribe(result => {
+    //         this._storage.takeExternalScores(result);
+    //     })
+    // }
 }

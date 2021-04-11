@@ -33,6 +33,7 @@ export class ScoresService {
         return this._http.get<Array<Scores>>(URL, httpOptions);
     }
 
+
     checkToken(): Observable<serverFeedback> {
         this.id = this._storage.passPlayerInfo().id;
         const httpOptions = {

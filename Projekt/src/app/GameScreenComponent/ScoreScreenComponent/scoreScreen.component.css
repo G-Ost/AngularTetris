@@ -69,3 +69,8 @@
     position: absolute;
     left: 15%;
 }
+
+input.scoreCheckbox{
+    transform: scale(1.2);
+    
+ }
