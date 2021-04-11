@@ -31,7 +31,7 @@ export class GameScreenComponent {
 
     public logScreenVisibility: boolean = false;
 
-    public points: number = 93;
+    public points: number = 0;
     public status: string = "not started";
 
     public timePassed: number = 0;

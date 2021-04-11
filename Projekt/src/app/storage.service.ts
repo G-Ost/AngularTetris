@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core"
-import { ScoresService } from "./scores.service";
+
 
 @Injectable({
     providedIn: "root"
@@ -36,14 +36,4 @@ export class StorageService {
         return this.myScores
     }
 
-    takeExternalScores(givenScores) {
-        this.externalScores = givenScores;
-    }
-
-    passExternalScores() {
-        return this.externalScores;
-    }
-    // loadScoresFromServer() {
-
-    // }
 }

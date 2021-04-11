@@ -26,14 +26,12 @@ export class ScoreScreenComponent implements OnDestroy {
         private _router: Router,
         private _scores: ScoresService,
         private _storage: StorageService) {
-
-        this.externalScores = this._storage.passExternalScores();
         this.assignPlayerInfoToMyScores(this._storage.passScores());
         this._sub$ = timer(0, 30000).pipe(
             concatMap(() => { return this._scores.load() }),
             filter(val => this.doUpdateScores)
         ).subscribe(
-            (result) => { console.log("ok"), this.externalScores = result, this.loadHighScores() }
+            (result) => { this.externalScores = result, this.loadHighScores() }
         )
     }
 
@@ -44,13 +42,6 @@ export class ScoreScreenComponent implements OnDestroy {
         this.displayedScores = [...this.myScores, ...this.externalScores]
 
 
-        // this._scores.load().subscribe(result => {
-        //     this.externalScores = result;
-        //     for (let i = 0; i < this.externalScores.length; i++) {
-        //         this.externalScores[i].source = "external";
-        //     }
-        //     this.displayedScores = [...this.myScores, ...this.externalScores]
-        // })
 
     }
 
@@ -60,17 +51,6 @@ export class ScoreScreenComponent implements OnDestroy {
         }
     }
 
-    // loadExternalScores() {
-
-
-    // let valuesArray = [];
-    // this._scores.load()
-    //     .pipe(
-    //         concatMap(val => {
-    //             valuesArray.push(val);
-    //         })
-    //     )
-    // }
 
     public myScores: Array<DisplayedScores> = [];
     public externalScores: Array<DisplayedScores> = [];
