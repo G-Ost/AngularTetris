@@ -1,8 +1,9 @@
 <div class="gameScreen"><br>
-    <tetris-core #game (lineCleared)="addPoints()" id="tetCore"></tetris-core>
+    <tetris-core #game (lineCleared)="addPoints()" id="tetCore" [ngClass]="coreClass"> </tetris-core>
     <gameInfo
         [playerInfo]="{name:playerInfo.name, id: playerInfo.id, points:points, status:status, timePassed: timePassed}">
     </gameInfo>
+
     <button class="linkButtons" (click)="showLog()">Gameplay Log</button>
     <br>
     <button class="linkButtons" (click)="showScores()">Highscores</button>
@@ -23,8 +24,9 @@
         <br>
         <br>
         <button class="tetrisButton" (click)="game.actionStop()" (click)="playerExit()">Exit game</button>
-    </div>
 
+    </div>
+    <button class="tetrisButton" (click)="colorSwitch()" id="colorSwitchButton">Color Switch</button>
 
 
 </div>

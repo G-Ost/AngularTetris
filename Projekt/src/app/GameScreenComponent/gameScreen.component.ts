@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { StorageService } from '../storage.service';
-import { ScoresService } from "../scores.service"
-
+import { ActivatedRoute } from "@angular/router";
 
 export interface PlayerInfo {
     name: string; id: string; points?: number;
@@ -23,10 +22,13 @@ export class GameScreenComponent {
     constructor(
         private _router: Router,
         private _storage: StorageService,
-        private _scores: ScoresService) {
+        private _route: ActivatedRoute) {
         this.playerInfo = this._storage.passPlayerInfo();
         this.logHistory = this._storage.passLog();
         this.myScores = this._storage.passScores();
+        this._route.params.subscribe(params => {
+            this.coreClass = params.color;
+        })
     }
 
     public logScreenVisibility: boolean = false;
@@ -37,6 +39,7 @@ export class GameScreenComponent {
     public timePassed: number = 0;
     public interval: any;
 
+    public coreClass: string = "green";
 
     startTimer() {
         this.pauseTimer();
@@ -115,6 +118,16 @@ export class GameScreenComponent {
 
     public hideLog(logVisibility: boolean) {
         this.logScreenVisibility = logVisibility;
+    }
+
+    public colorSwitch() {
+        if (this.coreClass === "green") {
+            this.coreClass = "black-and-white"
+        } else {
+            this.coreClass = "green"
+        }
+        this._router.navigate(["/game", this.coreClass]);
+        this._storage.setUserInfo({ name: this.playerInfo.name, id: this.playerInfo.id, color: this.coreClass });
     }
 
 }

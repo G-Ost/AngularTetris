@@ -5,19 +5,30 @@ import { Injectable } from "@angular/core"
     providedIn: "root"
 })
 export class StorageService {
-    private playerInfo = { name: "", id: "", points: 0 }
+    private playerInfo = { name: "", id: "", color: "green" }
     private logHistory = [];
     private myScores = [];
-    private externalScores = [];
 
-    setUserInfo(givenInfo) {
-        this.playerInfo.name = givenInfo.name;
-        this.playerInfo.id = givenInfo.id;
-        if (givenInfo.points) {
-            this.playerInfo.points = givenInfo.points;
-        }
+    setUserInfo(givenInfo: { name: string, id: string, color: string }) {
+        // this.playerInfo.name = givenInfo.name;
+        // this.playerInfo.id = givenInfo.id;
+        // this.playerInfo.color = givenInfo.color;
+        localStorage.setItem('playerInfo', JSON.stringify(givenInfo));
+        // if (givenInfo.points) {
+        //     this.playerInfo.points = givenInfo.points;
+        // }
     }
+
+    getInfoFromLocalStorage() {
+        let data = JSON.parse(localStorage.getItem("playerInfo"));
+        return data;
+    }
+    resetLocalStorage() {
+        localStorage.setItem('playerInfo', JSON.stringify(null));
+    }
+
     passPlayerInfo() {
+        this.playerInfo = this.getInfoFromLocalStorage();
         return this.playerInfo;
     }
 

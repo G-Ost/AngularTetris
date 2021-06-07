@@ -1,12 +1,18 @@
-<form #playerInfo="ngForm">
-    <input [(ngModel)]="playerInfo.name" name='name' #name="ngModel" required minlength="3" maxlength="20"
-        pattern="^[a-zA-Z]*$" autocomplete="off">
-    <div [hidden]="name.valid || name.pristine">Wrong format</div>
+<form [formGroup]="playerForm">
+    <input type="text" formControlName="playerName" autocomplete="off">
+    <div *ngIf="!playerForm.controls.playerName?.valid && playerForm.controls.playerName?.touched">Wrong format</div>
     <h2>Enter student id:</h2>
-    <input [(ngModel)]="playerInfo.id" name='id' #id="ngModel" autocomplete="off" maxlength="4">
+    <input type="number" formControlName="playerId" autocomplete="off">
     <br />
     <br />
-    <br>
-    <button type="button" id="startButton" (click)="passPlayerData.emit(playerInfo)"
-        [disabled]='!playerInfo.valid'>Start</button>
+    <h2>Chose theme color:</h2>
+    <select formControlName="themeColor" id="colorSelect">
+        <option value="green">Green</option>
+        <option value="black-and-white">Black and white</option>
+    </select>
+    <br />
+    <br />
+    <button type="button" id="startButton" [ngStyle]="{'background-color': buttonColor}"
+        (click)="passPlayerData.emit({name: playerForm.value.playerName, id:playerForm.value.playerId, color:playerForm.value.themeColor})"
+        [disabled]='!playerForm.valid'>Start</button>
 </form>

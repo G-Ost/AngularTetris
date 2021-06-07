@@ -15,7 +15,7 @@ export class WelcomeScreenComponent {
         private _storage: StorageService,
         private _scores: ScoresService
     ) {
-
+        // this._storage.resetLocalStorage();
     }
 
 
@@ -25,9 +25,9 @@ export class WelcomeScreenComponent {
         })
     }
 
-    openGame(playerInfo: { name: string, id: string }) {
-        this._router.navigate(["/game"]);
-        this._storage.setUserInfo(playerInfo);
+    openGame(playerInfo: { name: string, id: string, color: string }) {
+        this._router.navigate(["/game", playerInfo.color]);
+        this._storage.setUserInfo({ name: playerInfo.name, id: playerInfo.id, color: playerInfo.color });
         this.postToken();
     }
 

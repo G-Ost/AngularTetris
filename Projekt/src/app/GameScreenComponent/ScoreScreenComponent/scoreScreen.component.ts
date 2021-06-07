@@ -25,16 +25,20 @@ export class ScoreScreenComponent implements OnDestroy {
     constructor(
         private _router: Router,
         private _scores: ScoresService,
-        private _storage: StorageService) {
+        private _storage: StorageService,) {
+        this.themeColor = this._storage.passPlayerInfo().color;
         this.assignPlayerInfoToMyScores(this._storage.passScores());
         this._sub$ = timer(0, 30000).pipe(
-            concatMap(() => { return this._scores.load() }),
-            filter(val => this.doUpdateScores)
+            filter(val => this.doUpdateScores),
+            concatMap(() => { return this._scores.load() })
         ).subscribe(
-            (result) => { this.externalScores = result, this.loadHighScores() }
+            (result) => {
+                this.externalScores = result;
+                this.loadHighScores()
+            }
         )
     }
-
+    public themeColor: string = "green";
     loadHighScores() {
         for (let i = 0; i < this.externalScores.length; i++) {
             this.externalScores[i].source = "external";
@@ -59,7 +63,7 @@ export class ScoreScreenComponent implements OnDestroy {
     public scoreFilterCondition: string = "all";
     public doUpdateScores: boolean = true;
     public hideScores() {
-        this._router.navigate(["/game"]);
+        this._router.navigate(["/game", this.themeColor]);
 
     };
     private _sub$: Subscription;

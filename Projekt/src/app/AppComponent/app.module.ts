@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http'
 
 import { AppComponent } from './app.component';
@@ -16,6 +16,7 @@ import { sortPipe } from '../Pipes/sort.pipe';
 import { scoreSortPipe } from '../Pipes/scoreSort.pipe';
 import { RouterModule } from '@angular/router'
 import { scoreFilterPipe } from '../Pipes/scoreFilter.pipe';
+import { GameGuard } from '../playerDataGuard.service';
 
 
 @NgModule({
@@ -38,9 +39,10 @@ import { scoreFilterPipe } from '../Pipes/scoreFilter.pipe';
     TetrisCoreModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
     RouterModule.forRoot([
       { path: "welcome", component: WelcomeScreenComponent },
-      { path: "game", component: GameScreenComponent },
+      { path: "game/:color", component: GameScreenComponent, canActivate: [GameGuard] },
       { path: "log", component: LogScreenComponent },
       { path: "scores", component: ScoreScreenComponent },
       { path: "**", redirectTo: "welcome" }
