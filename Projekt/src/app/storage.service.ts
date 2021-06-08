@@ -21,6 +21,9 @@ export class StorageService {
 
     getInfoFromLocalStorage() {
         let data = JSON.parse(localStorage.getItem("playerInfo"));
+        if (data === null) {
+            data = this.playerInfo;
+        }
         return data;
     }
     resetLocalStorage() {

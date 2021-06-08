@@ -59,9 +59,9 @@
 }
 
 #colorSwitchButton{
-    position: fixed;
+    position: absolute;
     font-size: 16px;
     justify-self: right;
-    top:75%;
-    right:32%;
+    bottom:0%;
+    right:0%;
 }
