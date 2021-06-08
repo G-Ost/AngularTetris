@@ -40,7 +40,7 @@ export class ScoresService {
             headers: new HttpHeaders({
                 'accept': 'application/json'
             }),
-            "auth-token": this.id
+            "auth-token": this.id.toString()
         };
         const URL = `http://tetris.chrum.it/check-token`;
         return this._http.post<serverFeedback>(URL, httpOptions);
